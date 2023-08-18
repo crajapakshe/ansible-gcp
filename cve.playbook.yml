@@ -16,9 +16,10 @@
     changed_when: False
     
   - name: CVE-2023-3611 | CVE-2023-3776 | Disable across reboots
-    lineinfile:
-      dest: '/etc/sysctl.d/99-disable-unpriv-userns.conf'
+    ansible.builtin.lineinfile:
+      path: '/etc/sysctl.d/99-disable-unpriv-userns.conf'
       line: 'kernel.unprivileged_userns_clone=0'
       state: present
-      backup: no
+      backup: false
+      create: true
     
