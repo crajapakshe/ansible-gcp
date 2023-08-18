@@ -1,0 +1,22 @@
+
+---
+- name: Apply CVE Remediation
+  hosts: all
+    
+  tasks:
+  - name: Verify connection and usable Python
+    ansible.builtin.ping:
+
+  - name: CVE-2023-3611 | CVE-2023-3776 
+    ansible.builtin.shell: |
+      sudo sysctl -w kernel.unprivileged_userns_clone=0
+    args:
+      executable: /bin/bash
+    changed_when: False
+    
+  - name: CVE-2023-3611 | CVE-2023-3776 | Disable across reboots
+    lineinfile:
+      dest: '/etc/sysctl.d/99-disable-unpriv-userns.conf'
+      line: 'kernel.unprivileged_userns_clone=0'
+      state: present
+    

@@ -1,7 +1,7 @@
 ---
 plugin: gcp_compute
 projects:
-  - ab-heaton-dev
+  - my-project
 auth_kind: application
 keyed_groups:
   - key: labels
