@@ -18,5 +18,6 @@
     lineinfile:
       dest: '/etc/sysctl.d/99-disable-unpriv-userns.conf'
       line: 'kernel.unprivileged_userns_clone=0'
-      state: present
+      #state: present
+      backup: no
     
